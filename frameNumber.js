@@ -29,8 +29,20 @@ function generateVin() {
     // 生成车架号
     var vin = countryCode + manufacturerCode + vehicleTypeCode + vds + checksum + modelYear + assemblyPlant + sequenceNumber;
     $("#vin").val(vin);
+    toastr.info('已复制到剪贴板!');
+    copyToClipboard(vin);
 }
 
+function copyToClipboard(text) {
+    var textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = 0;
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+}
 // 计算校验位
 function calculateChecksum(vds) {
     var weightTable = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1];

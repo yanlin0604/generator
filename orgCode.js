@@ -19,8 +19,20 @@ function generatorOrgCode(){
 		C9 = C9 + '';
 	}
 	$("#orgCode").val(num+"-"+C9);
+	toastr.info('已复制到剪贴板!');
+	copyToClipboard(  $("#orgCode").val());
 }
 
+function copyToClipboard(text) {
+	var textarea = document.createElement('textarea');
+	textarea.style.position = 'fixed';
+	textarea.style.opacity = 0;
+	textarea.value = text;
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand('copy');
+	document.body.removeChild(textarea);
+}
 
 
 

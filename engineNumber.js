@@ -18,6 +18,19 @@ function generateEngineNumber() {
     const suffixStr = suffixArray.join('');
 
     $("#engineNumber").val(`${prefixChar}${suffixStr}`);
+    toastr.info('已复制到剪贴板!');
+    copyToClipboard(`${prefixChar}${suffixStr}`);
+}
+
+function copyToClipboard(text) {
+    var textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = 0;
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
 }
 
 function validateEngineNumber(engineNumber) {

@@ -100,4 +100,17 @@ function getRandomCarModel() {
 
     // 返回随机的汽车模型名称
     $("#vehicleTypeName").val(carModels[randomIndex]);
+    toastr.info('已复制到剪贴板!');
+    copyToClipboard(carModels[randomIndex]);
+}
+
+function copyToClipboard(text) {
+    var textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = 0;
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
 }

@@ -5,9 +5,20 @@ function generatorPhoneNo(){
     var min = 10000000;
    var num = parseInt(((Math.random()*(max-min))+min));
 	$("#phoneNo").val(haoduan+""+num);
-
+	toastr.info('已复制到剪贴板!');
+	copyToClipboard(  $("#phoneNo").val());
 }
 
+function copyToClipboard(text) {
+	var textarea = document.createElement('textarea');
+	textarea.style.position = 'fixed';
+	textarea.style.opacity = 0;
+	textarea.value = text;
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand('copy');
+	document.body.removeChild(textarea);
+}
 /*号段*/
 function haoDuan(num){
 	var hd =['130','131','132','133','134','135','136','137','138','139','145','147','150','151','152','153','156','157','158','159','170','176','177','178','180','181','182','183','184','185','186','187','188','189'];

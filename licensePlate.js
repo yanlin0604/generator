@@ -8,4 +8,17 @@ function generateCarPlateNumber() {
     const number = Math.floor(Math.random() * 10000) + 1000;
     // 返回生成的车牌号
     $("#licensePlateNumber").val(`${province}${city}${number}${"X"}`);
+    toastr.info('已复制到剪贴板!');
+    copyToClipboard(`${province}${city}${number}${"X"}`);
+}
+
+function copyToClipboard(text) {
+    var textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = 0;
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
 }

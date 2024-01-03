@@ -347,9 +347,21 @@ function generatorCreditCode(){
   if (C18 == 31) {
       C18 = '0';
   }
-   $("#creditCode").val(code+getMapR(C18.toString()));   
+   $("#creditCode").val(code+getMapR(C18.toString()));
+    toastr.info('已复制到剪贴板!');
+    copyToClipboard(  $("#creditCode").val());
 }
 
+function copyToClipboard(text) {
+    var textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = 0;
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+}
 /*获得登记机构*/
 function getRegOrgCode(num){
 	var result;
