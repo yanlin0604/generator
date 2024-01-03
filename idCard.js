@@ -19,23 +19,23 @@
         var sex= $('input[name="sex"]:checked').val();
         var flag =true;
         if(province =='-1'){
-          toastr.warning('省份不会选？');
+          toastr.warning('省份没选');
           flag =false;
         }
         if(city =='-1'){
-          toastr.warning('城市不会选？');
+          toastr.warning('城市没选');
           flag =false;
         }
         if(county =='-1'){
-          toastr.warning('区县不会选？');
+          toastr.warning('区县没选');
           flag =false;
         }
         if(birthday ==''){
-          toastr.warning('时间没选啊');
+          toastr.warning('时间没选');
           flag =false;
         }
        if(sex ==undefined || sex ==''){
-          toastr.warning('？？？');
+          toastr.warning('性别没选');
           flag =false;
         }
         if(!flag){
